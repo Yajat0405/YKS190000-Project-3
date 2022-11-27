@@ -18,4 +18,5 @@ public class TriggerVol : MonoBehaviour
         robotGeo.GetComponent<RobotAnimation>().deactivateAnim();
         Debug.Log("Robot Deactivated");
     }
+
 }
