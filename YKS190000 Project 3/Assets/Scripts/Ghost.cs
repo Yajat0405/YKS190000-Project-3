@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] GameObject player;
+    [SerializeField] Transform playerTransform;
     private float _rangeOfAwareness = 35f;
     private bool _targetWithinRange = false;
 
     private void DetectPlayerRange()
     {
-        float _currentDist = Vector3.Distance(transform.position, target.position);
+        float _currentDist = Vector3.Distance(transform.position, playerTransform.position);
         if (_currentDist < _rangeOfAwareness)
         {
             _targetWithinRange = false;
@@ -22,5 +21,13 @@ public class Ghost : MonoBehaviour
             _targetWithinRange = true;
             //cinematic starts player stops 
         }
+    }
+    public void CrouchedAwareness()
+    {
+        _rangeOfAwareness = 5f;
+    }
+    public void NormalAwareness()
+    {
+        _rangeOfAwareness = 35f;
     }
 }
