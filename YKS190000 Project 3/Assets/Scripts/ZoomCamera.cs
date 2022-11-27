@@ -8,7 +8,7 @@ public class ZoomCamera : MonoBehaviour
     public GameObject zoomCam;
    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             mainCam.SetActive(false);
             zoomCam.SetActive(true);
