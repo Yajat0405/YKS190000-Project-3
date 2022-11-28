@@ -5,14 +5,19 @@ using UnityEngine;
 public class BlueLight : MonoBehaviour
 {
     [SerializeField] GameObject _BlueLight;
-    IEnumerator WaitForSecs()
+    IEnumerator WaitForSecs(bool _bool)
     {
-        yield return new WaitForSeconds(3);
-        _BlueLight.SetActive(true);
+        yield return new WaitForSeconds(2);
+        _BlueLight.SetActive(_bool);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(WaitForSecs());
+        StartCoroutine(WaitForSecs(true));
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        StartCoroutine(WaitForSecs(false));
     }
 }
