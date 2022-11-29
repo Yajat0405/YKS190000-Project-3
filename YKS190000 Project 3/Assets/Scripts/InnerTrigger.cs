@@ -7,19 +7,14 @@ public class InnerTrigger : MonoBehaviour
     [SerializeField] GameObject robotGeo;
     private void OnTriggerEnter(Collider other)
     {
-        robotGeo.GetComponent<RobotAnimation>().activateSpin();
+        //robotGeo.GetComponent<SpinAnim>().ActivateSpin();
     }
 
-    IEnumerator LockTimer()
-    {
-        yield return new WaitForSeconds(3);
-        robotGeo.GetComponent<SpinAnim>().deactivateSpin();
-    }
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("exited TriggerVol");
-        StartCoroutine(LockTimer());
-
+        //robotGeo.GetComponent<SpinAnim>().DeactivateSpin();
+        robotGeo.GetComponent<RobotAnimation>().activateAnim();
         Debug.Log("Robot Deactivated");
     }
 }

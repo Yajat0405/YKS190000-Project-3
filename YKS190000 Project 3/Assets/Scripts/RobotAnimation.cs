@@ -13,14 +13,11 @@ public class RobotAnimation : MonoBehaviour
 
     public void activateAnim()
     {
+        Debug.Log("activate robot anim");
         robotAnimator.SetTrigger("Tri_Activate");
     }
     public void deactivateAnim()
     {
         robotAnimator.SetTrigger("Tri_Deactivate");
-    }
-    public void clapAnim()
-    {
-      robotAnimator.SetTrigger("Tri_Clap"); 
     }
 }

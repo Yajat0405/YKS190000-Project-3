@@ -7,7 +7,7 @@ public class RedLight : MonoBehaviour
     [SerializeField] GameObject _RedLight;
     IEnumerator WaitForSecs(bool _bool)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         _RedLight.SetActive(_bool);
     }
 
