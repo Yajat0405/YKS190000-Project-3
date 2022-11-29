@@ -6,17 +6,23 @@ public class ZoomCamera : MonoBehaviour
 {
     public GameObject mainCam;
     public GameObject zoomCam;
-   void Update()
+
+    IEnumerator CinematicTimer()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            mainCam.SetActive(false);
-            zoomCam.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            mainCam.SetActive(true);
-            zoomCam.SetActive(false);
-        }
+        yield return new WaitForSeconds(4);
+        endCinema();
     }
+    public void startCinema()
+    {
+        mainCam.SetActive(false);
+        zoomCam.SetActive(true);
+        StartCoroutine(CinematicTimer());
+    }
+
+    public void endCinema()
+    {
+        mainCam.SetActive(true);
+        zoomCam.SetActive(false);
+    }
+        
 }

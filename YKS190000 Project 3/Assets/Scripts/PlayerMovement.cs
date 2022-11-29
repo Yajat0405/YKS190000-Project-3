@@ -19,17 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-        {
-            speed = 30f;
-        }
-        
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-        {
-            speed = 12f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 1f || Input.GetKeyDown(KeyCode.RightControl) && speed > 1f)
         {
             speed = 5f;
         }
@@ -55,5 +45,21 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+    }
+
+    IEnumerator LockTimer()
+    {
+        yield return new WaitForSeconds(4);
+        resumeMovement();
+    }
+    public void lockMovement()
+    {
+        speed = 0f;
+        StartCoroutine(LockTimer());
+    }
+
+    public void resumeMovement()
+    {
+        speed = 12f;
     }
 }

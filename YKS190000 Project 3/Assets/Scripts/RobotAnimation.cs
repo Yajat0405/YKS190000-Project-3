@@ -11,16 +11,6 @@ public class RobotAnimation : MonoBehaviour
         robotAnimator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("F");
-            robotAnimator.SetTrigger("Tri_Clap");
-        }
-
-    }
-
     public void activateAnim()
     {
         robotAnimator.SetTrigger("Tri_Activate");
