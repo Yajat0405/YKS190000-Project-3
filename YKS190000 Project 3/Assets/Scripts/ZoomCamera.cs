@@ -9,7 +9,7 @@ public class ZoomCamera : MonoBehaviour
 
     IEnumerator CinematicTimer()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         endCinema();
     }
     public void startCinema()

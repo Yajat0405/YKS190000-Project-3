@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator LockTimer()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         resumeMovement();
     }
     public void lockMovement()
@@ -61,5 +61,10 @@ public class PlayerMovement : MonoBehaviour
     public void resumeMovement()
     {
         speed = 12f;
+    }
+
+    public void halfSpeed()
+    {
+        speed = 6f;
     }
 }

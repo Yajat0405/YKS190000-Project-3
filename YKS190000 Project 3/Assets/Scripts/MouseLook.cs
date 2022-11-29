@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    float mouseSensitivity = 100f;
 
     public Transform playerBody;
     float xRotation = 0f;
@@ -26,7 +26,7 @@ public class MouseLook : MonoBehaviour
 
     IEnumerator LockTimer()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         resumeMouse();
     }
     public void lockMouse()
@@ -38,6 +38,11 @@ public class MouseLook : MonoBehaviour
     public void resumeMouse()
     {
         mouseSensitivity = 100f;
+    }
+
+    public void halfMouse()
+    {
+        mouseSensitivity = 50f;
     }
 }
 
