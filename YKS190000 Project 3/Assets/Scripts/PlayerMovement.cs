@@ -19,15 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 1f || Input.GetKeyDown(KeyCode.RightControl) && speed > 1f)
-        {
-            speed = 5f;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
-        {
-            speed = 12f;
-        }
-
         isGrounded = Physics.CheckSphere(groundcheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
@@ -40,30 +31,28 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed *Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
     }
 
     IEnumerator LockTimer()
     {
+        speed = 0f;
         yield return new WaitForSeconds(5);
-        resumeMovement();
+        speed = 0f;
+        ResumeMovement();
     }
-    public void lockMovement()
+    public void LockMovement()
     {
         speed = 0f;
+        Debug.Log("speed 0");
         StartCoroutine(LockTimer());
     }
 
-    public void resumeMovement()
+    public void ResumeMovement()
     {
         speed = 12f;
     }
 
-    public void halfSpeed()
+    public void HalfSpeed()
     {
         speed = 6f;
     }

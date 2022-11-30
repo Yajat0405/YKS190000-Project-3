@@ -10,6 +10,13 @@ public class TriggerVol : MonoBehaviour
 
     public AudioClip _thunderClip;
     public AudioSource _thunderSource;
+
+    public AudioClip _activationClip;
+    public AudioSource _activationSource;
+
+    public AudioClip _clapClip;
+    public AudioSource _clapSource;
+    
     private float fixedDeltaTime;
 
     private void Awake()
@@ -19,23 +26,26 @@ public class TriggerVol : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("entered TriggerVol");
-        _thunderSource.PlayOneShot(_thunderClip, 1);
+        _clapSource.loop = true;
+       _thunderSource.PlayOneShot(_thunderClip, 1);
+        _activationSource.PlayDelayed(1f);
+        StartCoroutine(DelaySound());
         Time.timeScale = 0.6f;
-        StartCoroutine(stopSlowMotion());
-        robotGeo.GetComponent<RobotAnimation>().activateAnim();
-        cameraController.GetComponent<ZoomCamera>().startCinema();
-        cameraController.GetComponent<MouseLook>().lockMouse();
-        player.GetComponent<PlayerMovement>().lockMovement();
+        StartCoroutine(StopSlowMotion());
+        robotGeo.GetComponent<RobotAnimation>().ActivateAnim();
+        cameraController.GetComponent<ZoomCamera>().StartCinema();
+        cameraController.GetComponent<MouseLook>().LockMouse();
+        player.GetComponent<PlayerMovement>().LockMovement();
         Debug.Log("Robot Activated");
     }
 
     IEnumerator LockTimer()
     {
         yield return new WaitForSeconds(3);
-        robotGeo.GetComponent<RobotAnimation>().deactivateAnim();
+        robotGeo.GetComponent<RobotAnimation>().DeactivateAnim();
     }
 
-    IEnumerator stopSlowMotion()
+    IEnumerator StopSlowMotion()
     {
         yield return new WaitForSeconds(5);
         Time.timeScale = 1.0f;
@@ -44,8 +54,13 @@ public class TriggerVol : MonoBehaviour
     {
         Debug.Log("exited TriggerVol");
         StartCoroutine(LockTimer());
-        
+        _clapSource.Pause();
         Debug.Log("Robot Deactivated");
     }
 
+    IEnumerator DelaySound()
+    {
+        yield return new WaitForSeconds(2.5f);
+        _clapSource.Play();
+    }
 }

@@ -11,12 +11,12 @@ public class RobotAnimation : MonoBehaviour
         robotAnimator = GetComponent<Animator>();
     }
 
-    public void activateAnim()
+    public void ActivateAnim()
     {
         Debug.Log("activate robot anim");
         robotAnimator.SetTrigger("Tri_Activate");
     }
-    public void deactivateAnim()
+    public void DeactivateAnim()
     {
         robotAnimator.SetTrigger("Tri_Deactivate");
     }

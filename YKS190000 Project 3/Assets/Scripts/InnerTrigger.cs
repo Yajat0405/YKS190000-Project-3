@@ -17,15 +17,15 @@ public class InnerTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Time.timeScale = 2f;
-        player.GetComponent<PlayerMovement>().halfSpeed();
-        cameraController.GetComponent<MouseLook>().halfMouse();
+        player.GetComponent<PlayerMovement>().HalfSpeed();
+        cameraController.GetComponent<MouseLook>().HalfMouse();
     }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("exited TriggerVol");
         Time.timeScale = 1f;
-        player.GetComponent<PlayerMovement>().resumeMovement();
+        player.GetComponent<PlayerMovement>().ResumeMovement();
         Debug.Log("Robot Deactivated");
     }
 }

@@ -10,16 +10,16 @@ public class ZoomCamera : MonoBehaviour
     IEnumerator CinematicTimer()
     {
         yield return new WaitForSeconds(5);
-        endCinema();
+        EndCinema();
     }
-    public void startCinema()
+    public void StartCinema()
     {
         mainCam.SetActive(false);
         zoomCam.SetActive(true);
         StartCoroutine(CinematicTimer());
     }
 
-    public void endCinema()
+    public void EndCinema()
     {
         mainCam.SetActive(true);
         zoomCam.SetActive(false);

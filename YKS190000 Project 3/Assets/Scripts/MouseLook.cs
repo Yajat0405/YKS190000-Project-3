@@ -27,20 +27,20 @@ public class MouseLook : MonoBehaviour
     IEnumerator LockTimer()
     {
         yield return new WaitForSeconds(5);
-        resumeMouse();
+        ResumeMouse();
     }
-    public void lockMouse()
+    public void LockMouse()
     {
        mouseSensitivity = 0f;
         StartCoroutine(LockTimer());
     }
 
-    public void resumeMouse()
+    public void ResumeMouse()
     {
         mouseSensitivity = 100f;
     }
 
-    public void halfMouse()
+    public void HalfMouse()
     {
         mouseSensitivity = 50f;
     }
