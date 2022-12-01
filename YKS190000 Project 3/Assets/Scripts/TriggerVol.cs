@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerVol : MonoBehaviour
 {
     [SerializeField]GameObject robotGeo;
+    [SerializeField] GameObject levelController;
     [SerializeField] GameObject cameraController;
     [SerializeField] GameObject player;
 
@@ -34,7 +35,7 @@ public class TriggerVol : MonoBehaviour
         StartCoroutine(StopSlowMotion());
         robotGeo.GetComponent<RobotAnimation>().ActivateAnim();
         cameraController.GetComponent<ZoomCamera>().StartCinema();
-        cameraController.GetComponent<MouseLook>().LockMouse();
+        levelController.GetComponent<MouseLook>().LockMouse();
         player.GetComponent<PlayerMovement>().LockMovement();
         Debug.Log("Robot Activated");
     }

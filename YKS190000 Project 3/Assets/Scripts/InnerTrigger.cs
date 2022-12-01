@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class InnerTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject robotGeo;
     [SerializeField] GameObject player;
     [SerializeField] GameObject cameraController;
+
+    public AudioClip _dangerClip;
+    public AudioSource _dangerSource;
 
     private float fixedDeltaTime;
 
@@ -16,6 +18,7 @@ public class InnerTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        _dangerSource.PlayOneShot(_dangerClip, 1);
         Time.timeScale = 2f;
         player.GetComponent<PlayerMovement>().HalfSpeed();
         cameraController.GetComponent<MouseLook>().HalfMouse();
